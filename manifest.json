@@ -3,7 +3,7 @@
   "description" : "Find-in-page only for elements matched by your custom css selector",
   "version": "1.0",
   "manifest_version": 2,
-  "permissions": ["<all_urls>"],
+  "permissions": ["activeTab", "<all_urls>"],
   "browser_action": {
     "default_popup": "popup.html"
   },
