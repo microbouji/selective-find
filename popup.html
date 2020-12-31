@@ -1,6 +1,37 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
   <body>
-    <input id="selector" type="text" placeholder="selector" autofocus>
+    <style>
+      .sf-box {
+        display: flex;
+      }
+      .info {
+        white-space: nowrap;
+        font-size: 15px;
+        margin-left: 10px;
+        align-self: center;
+        color: #333;
+      }
+    </style>
+
+    <div class="sf-box">
+      <input
+        id="selector"
+        type="text"
+        placeholder="selector"
+        style="width: 100px"
+        autofocus
+      />
+      <input id="query" type="text" placeholder="search" />
+      <button id="next">⮟</button>
+      <button id="prev">⮝</button>
+      <div class="info">
+        <span id="index">0</span> of <span id="total">0</span>
+      </div>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
