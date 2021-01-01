@@ -2,6 +2,8 @@ const btnPrev = document.getElementById("prev");
 const btnNext = document.getElementById("next");
 const selectorEl = document.getElementById("selector");
 const queryEl = document.getElementById("query");
+const indexEl = document.getElementById("index");
+const totalEl = document.getElementById("total");
 
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   const port = chrome.tabs.connect(tabs[0].id);
@@ -40,4 +42,12 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       port.postMessage({ type: "NEXT" });
     }
   }
+
+  port.onMessage.addListener(function (msg) {
+    if (msg.type === "UPDATE_INDEX") {
+      indexEl.textContent = msg.value;
+    } else if (msg.type === "UPDATE_TOTAL") {
+      totalEl.textContent = msg.value;
+    }
+  });
 });
