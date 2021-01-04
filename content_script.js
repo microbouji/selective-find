@@ -30,7 +30,11 @@ chrome.runtime.onConnect.addListener(function (port) {
 
     selectedNodes.forEach((el, i) => {
       walk_the_DOM(el, (node) => {
-        if (node.nodeType === Node.TEXT_NODE && Boolean(node.textContent)) {
+        if (
+          node.nodeType === Node.TEXT_NODE &&
+          Boolean(node.textContent) &&
+          node.parentElement.offsetParent
+        ) {
           const regex = RegExp(query.toLowerCase(), "g");
           const nodeText = node.textContent.toLowerCase();
           while (regex.test(nodeText)) {
